@@ -16,11 +16,11 @@
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
-    "next": "^15.5.4",
-    "nodemailer": "^7.0.6",
+    "next": "^15.5.28",
+    "nodemailer": "^10.1.1",
     "pg": "^8.16.3",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.1.10",
+    "react-dom": "^19.1.10",
     "zod": "^3.25.76"
   },
   "devDependencies": {
@@ -33,6 +33,9 @@
     "vitest": "^3.2.4"
   },
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
+  },
+  "overrides": {
+    "postcss": "^8.5.23"
   }
 }
