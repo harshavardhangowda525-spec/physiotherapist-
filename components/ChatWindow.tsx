@@ -59,7 +59,11 @@ export default function ChatWindow() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" }), [msgs, busy]);
+  useEffect(() => {
+    // Braces matter: newer browsers return a Promise from scrollIntoView, and an effect
+    // must never return anything except a cleanup function.
+    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [msgs, busy]);
 
   function onQuick(q: QR) {
     if (q.value === "call") {
