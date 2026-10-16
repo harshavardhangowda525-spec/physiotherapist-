@@ -10,7 +10,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
           Please reload the page, or call the clinic on <a href="tel:+917715877047">077158 77047</a>.
         </p>
         <button onClick={reset}>Try again</button>
-        <details>
+        <details open>
           <summary>Technical details</summary>
           <code style={{ whiteSpace: "pre-wrap" }}>
             {error.name}: {error.message}

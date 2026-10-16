@@ -18,11 +18,13 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           <button className="btn" onClick={reset}>Try again</button>
           <button className="btn secondary" onClick={() => window.location.reload()}>Reload page</button>
         </p>
-        <details className="muted">
+        <details className="muted" open>
           <summary>Technical details (for the clinic&apos;s web team)</summary>
           <code style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
             {error.name}: {error.message}
             {error.digest ? `\nDigest: ${error.digest}` : ""}
+            {`\nPage: ${typeof window !== "undefined" ? window.location.pathname : ""}`}
+            {error.stack ? `\n${error.stack.split("\n").slice(0, 4).join("\n")}` : ""}
           </code>
         </details>
       </div>
