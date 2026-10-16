@@ -18,6 +18,9 @@ The app is a standard Next.js 15 project (`npm run build && npm start`). It runs
 - Only trust `X-Forwarded-For` behind a proxy you control (Vercel, Render and similar hosts set it correctly).
 
 ## 3. Staff accounts
+**Vercel / automatic:** the `vercel-build` script runs `scripts/setup-db.ts` before `next build`. It creates the tables and, if no admin exists yet, creates the first admin from `ADMIN_EMAIL`, `ADMIN_PASSWORD` (and optional `ADMIN_NAME`). It never overwrites an existing admin. You can remove `ADMIN_PASSWORD` from the host once the first deploy has succeeded.
+
+**Manual / extra accounts:**
 ```bash
 npm run create-admin -- --email person@clinic.example --name "Name" --role admin   # or --role staff
 ```

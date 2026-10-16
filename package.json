@@ -10,7 +10,9 @@
     "create-admin": "tsx scripts/create-admin.ts",
     "retention": "tsx scripts/retention.ts",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "setup-db": "tsx scripts/setup-db.ts",
+    "vercel-build": "tsx scripts/setup-db.ts && next build"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -29,5 +31,8 @@
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
