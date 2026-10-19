@@ -2,11 +2,12 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  title: "Physiotherapy Treatment at Home — Appointment Assistant",
+  title: "Appointment Assistant | Physiotherapy Treatment at Home, Bengaluru",
   description: "Submit a home physiotherapy appointment request or ask a question.",
   robots: { index: false },
+  icons: { icon: "/favicon.svg" },
 };
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#0b6e99" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#0f766e" };
 
 // Browser translation (e.g. Chrome's Google Translate) and some extensions move or wrap
 // text nodes that React owns; React then crashes with removeChild/insertBefore errors.
@@ -15,9 +16,16 @@ const DOM_GUARD = `(function(){if(typeof Node!=="function"||!Node.prototype)retu
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: DOM_GUARD }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        />
       </head>
       <body suppressHydrationWarning>{children}</body>
     </html>

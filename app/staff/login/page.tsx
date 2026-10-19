@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { Atmosphere } from "@/components/Atmosphere";
+import { BrandMark } from "@/components/Icons";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -24,23 +26,37 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="container" style={{ maxWidth: 420, paddingTop: 64 }}>
-      <div className="card">
-        <h1 style={{ fontSize: "1.3rem", marginTop: 0 }}>Clinic staff sign-in</h1>
-        <p className="muted">Authorised clinic personnel only. Patient information is confidential.</p>
-        {error && <div className="alert error" role="alert">{error}</div>}
-        <form onSubmit={submit}>
-          <div className="field">
-            <label htmlFor="email">Email</label>
-            <input id="email" type="email" autoComplete="username" required value={email} onChange={(e) => setEmail(e.target.value)} />
+    <>
+      <Atmosphere />
+      <main className="login">
+        <div className="login-card glass glass-edge">
+          <span className="brand-mark">
+            <BrandMark size={22} />
+          </span>
+          <div>
+            <h1>Clinic staff</h1>
+            <p className="muted">Sign in to review appointment requests. Authorised staff only — patient information is confidential.</p>
           </div>
-          <div className="field">
-            <label htmlFor="password">Password</label>
-            <input id="password" type="password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <button className="btn" type="submit" disabled={busy}>{busy ? "Signing in…" : "Sign in"}</button>
-        </form>
-      </div>
-    </main>
+          <form onSubmit={submit} className="stack">
+            {error && (
+              <div className="banner banner--error" role="alert">
+                {error}
+              </div>
+            )}
+            <label className="field" htmlFor="email">
+              Email
+              <input id="email" className="input" type="email" autoComplete="username" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            </label>
+            <label className="field" htmlFor="password">
+              Password
+              <input id="password" className="input" type="password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+            </label>
+            <button className="btn btn--primary" type="submit" disabled={busy}>
+              {busy ? "Signing in…" : "Sign in"}
+            </button>
+          </form>
+        </div>
+      </main>
+    </>
   );
 }

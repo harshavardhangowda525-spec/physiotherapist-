@@ -4,6 +4,8 @@ A website chatbot, WhatsApp assistant and secure staff dashboard. Together they 
 
 > Every submission is an **appointment request, not a confirmed booking**. Only clinic staff can mark a request as *Confirmed* in the dashboard.
 
+![landing](docs/landing.png)
+
 | Website chat (mobile) | Staff dashboard |
 |---|---|
 | ![chat](docs/chat-submitted.png) | ![dashboard](docs/dashboard.png) |

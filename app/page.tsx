@@ -1,29 +1,98 @@
-import Script from "next/script";
+import { Atmosphere } from "@/components/Atmosphere";
+import ChatWindow from "@/components/ChatWindow";
+import { BrandMark, IconClock, IconHeart, IconHome, IconPhone, IconPin, IconShield, IconStar } from "@/components/Icons";
 import { BUSINESS } from "@/lib/business";
 
 export default function Home() {
   return (
-    <main>
-      <section className="hero">
-        <div className="container">
-          <h1>{BUSINESS.name}</h1>
-          <p>Home physiotherapy appointment requests, 24/7. Requests are reviewed and confirmed by the clinic team.</p>
-          <p>
-            <a className="btn" href="/chat">Open the appointment assistant</a>{" "}
-            <a className="btn secondary" href={`tel:${BUSINESS.phoneTel}`}>Call {BUSINESS.phoneDisplay}</a>
-          </p>
+    <>
+      <Atmosphere />
+      <main className="landing">
+        <header className="topbar glass glass--soft">
+          <a className="brand" href={BUSINESS.website} rel="noopener">
+            <span className="brand-mark">
+              <BrandMark size={22} />
+            </span>
+            <span>
+              {BUSINESS.name}
+              <small>Jayanagar · Bengaluru</small>
+            </span>
+          </a>
+          <a className="btn btn--primary" href={`tel:${BUSINESS.phoneTel}`}>
+            <IconPhone size={16} /> <span>Call {BUSINESS.phoneDisplay}</span>
+          </a>
+        </header>
+
+        <div className="hero">
+          <div className="hero-copy">
+            <span className="eyebrow">
+              <span className="dot" /> Home physiotherapy · Bengaluru
+            </span>
+            <h1>
+              Care that comes <em>to your door.</em>
+            </h1>
+            <p className="lede">
+              Tell us what you need and when suits you. Our assistant takes your appointment request in about two minutes —
+              then the clinic team calls to confirm availability.
+            </p>
+            <div className="hero-actions">
+              <a className="btn btn--primary" href="#chat">
+                Request a home visit
+              </a>
+              <a className="btn" href={`tel:${BUSINESS.phoneTel}`}>
+                <IconPhone size={16} /> {BUSINESS.phoneDisplay}
+              </a>
+            </div>
+
+            <div className="facts">
+              <div className="fact glass glass--soft">
+                <span className="fact-icon"><IconHome /></span>
+                <div>
+                  <h3>Service</h3>
+                  <p>Physiotherapy at home<span>Visits confirmed by the clinic</span></p>
+                </div>
+              </div>
+              <div className="fact glass glass--soft">
+                <span className="fact-icon"><IconClock /></span>
+                <div>
+                  <h3>Hours</h3>
+                  <p>{BUSINESS.listedHours}<span>Slots confirmed by the clinic</span></p>
+                </div>
+              </div>
+              <div className="fact glass glass--soft">
+                <span className="fact-icon"><IconStar /></span>
+                <div>
+                  <h3>Google rating</h3>
+                  <p>5.0 ★ · 49 reviews<span>As listed on Google</span></p>
+                </div>
+              </div>
+              <div className="fact glass glass--soft">
+                <span className="fact-icon"><IconPin /></span>
+                <div>
+                  <h3>Clinic</h3>
+                  <p>Yediyur, Jayanagar 6th Block<span>Bengaluru 560082</span></p>
+                </div>
+              </div>
+            </div>
+
+            <div className="trust-strip">
+              {BUSINESS.womenOwned && <span><IconHeart size={14} /> Women-owned business</span>}
+              <span><IconShield size={14} /> Your details go only to the clinic team</span>
+            </div>
+          </div>
+
+          <div id="chat">
+            <ChatWindow />
+          </div>
         </div>
-      </section>
-      <section className="container">
-        <div className="card">
-          <h2>Add the assistant to the clinic website</h2>
-          <p>Paste this line before <code>&lt;/body&gt;</code> on {BUSINESS.website}. A &ldquo;Book a home visit&rdquo; button appears in the corner of every page.</p>
-          <pre className="code">{`<script src="https://YOUR-APP-DOMAIN/widget.js" defer></script>`}</pre>
-          <p className="muted">Also add the website&apos;s origin to <code>CHAT_EMBED_ALLOWED_ORIGINS</code> so the chat may be shown inside it. The widget on this page is a live preview.</p>
-          <p className="muted">Clinic staff: <a href="/staff">sign in to the dashboard</a>.</p>
-        </div>
-      </section>
-      <Script src="/widget.js" strategy="afterInteractive" />
-    </main>
+
+        <footer className="site-footer glass glass--soft">
+          <span>{BUSINESS.address}</span>
+          <span>
+            <a href="/staff">Staff login</a>
+          </span>
+        </footer>
+      </main>
+    </>
   );
 }
